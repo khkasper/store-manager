@@ -12,5 +12,10 @@ router.post('/', [
   quantityAuth,
   ProductController.create,
 ]);
+router.put('/:id', [
+  nameAuth,
+  quantityAuth,
+  ProductController.update,
+]);
 
 module.exports = router;

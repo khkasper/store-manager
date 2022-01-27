@@ -37,8 +37,19 @@ const getAll = async () => {
   return products;
 };
 
+const update = async (id, name, quantity) => {
+  const product = await ProductModel.update(id, name, quantity);
+
+  if (product === undefined) {
+    throw ERR_404;
+  }
+
+  return product;
+};
+
 module.exports = {
   create,
   getById,
   getAll,
+  update,
 };
