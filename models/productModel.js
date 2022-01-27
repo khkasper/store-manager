@@ -12,7 +12,21 @@ const getByName = async (name) => {
   return products;
 };
 
+const getById = async (id) => {
+  const query = 'SELECT * FROM products WHERE id = ?';
+  const [[product]] = await connection.execute(query, [id]);
+  return product;
+};
+
+const getAll = async () => {
+  const query = 'SELECT * FROM products';
+  const [products] = await connection.execute(query);
+  return products;
+};
+
 module.exports = {
   create,
   getByName,
+  getById,
+  getAll,
 };
