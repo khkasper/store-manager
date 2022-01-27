@@ -47,9 +47,21 @@ const update = async (id, name, quantity) => {
   return product;
 };
 
+const remove = async (id) => {
+  const productId = await ProductModel.getById(id);
+  const product = await ProductModel.remove(id);
+
+  if (product === undefined) {
+    throw ERR_404;
+  }
+
+  return productId;
+};
+
 module.exports = {
   create,
   getById,
   getAll,
   update,
+  remove,
 };

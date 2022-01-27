@@ -27,7 +27,14 @@ const getAll = async () => {
 const update = async (id, name, quantity) => {
   const query = 'UPDATE products SET name = ?, quantity = ? WHERE id = ?';
   const [product] = await connection.execute(query, [name, quantity, id]);
-  return product.changedRows;
+  return product.affectedRows;
+};
+
+const remove = async (id) => {
+  const query = 'DELETE FROM products WHERE id = ?';
+  const [product] = await connection.execute(query, [id]);
+  console.log(product.affectedRows);
+  return product.affectedRows;
 };
 
 module.exports = {
@@ -36,4 +43,5 @@ module.exports = {
   getById,
   getAll,
   update,
+  remove,
 };

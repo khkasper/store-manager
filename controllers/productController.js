@@ -27,9 +27,18 @@ const update = rescue(async (req, res, _next) => {
   return res.status(OK).json({ id, name, quantity });
 });
 
+const remove = rescue(async (req, res, _next) => {
+  const { id } = req.params;
+  await ProductService.getById(id);
+  const product = await ProductService.remove(id);
+  console.log(product);
+  return res.status(OK).json(product);
+});
+
 module.exports = {
   create,
   getById,
   getAll,
   update,
+  remove,
 };

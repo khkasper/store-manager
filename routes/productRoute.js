@@ -17,5 +17,6 @@ router.put('/:id', [
   quantityAuth,
   ProductController.update,
 ]);
+router.delete('/:id', ProductController.remove);
 
 module.exports = router;
