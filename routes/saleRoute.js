@@ -5,6 +5,8 @@ const SaleController = require('../controllers/saleController');
 
 const router = express.Router();
 
+router.get('/:id', SaleController.getById);
+router.get('/', SaleController.getAll);
 router.post('/', [
   saleAuth,
   saleQuantityAuth,
