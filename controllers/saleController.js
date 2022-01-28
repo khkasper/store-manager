@@ -25,8 +25,16 @@ const getById = rescue(async (req, res) => {
   return res.status(OK).json(sale);
 });
 
+const update = rescue(async (req, res) => {
+  const [sale] = serialize(req.body);
+  const { id } = req.params;
+  await SaleService.update({ id, ...sale });
+  return res.status(OK).json({ saleId: id, itemUpdated: req.body });
+});
+
 module.exports = {
   create,
   getAll,
   getById,
+  update,
 };

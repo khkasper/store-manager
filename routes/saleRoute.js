@@ -12,5 +12,10 @@ router.post('/', [
   saleQuantityAuth,
   SaleController.create,
 ]);
+router.put('/:id', [
+  saleAuth,
+  saleQuantityAuth,
+  SaleController.update,
+]);
 
 module.exports = router;
