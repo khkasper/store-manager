@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const productRoute = require('./routes/productRoute');
+const saleRoute = require('./routes/saleRoute');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use('/products', productRoute);
+app.use('/sales', saleRoute);
 app.use('/', errorMiddleware);
 
 // não remova esse endpoint, e para o avaliador funcionar
