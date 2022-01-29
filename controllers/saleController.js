@@ -32,9 +32,22 @@ const update = rescue(async (req, res) => {
   return res.status(OK).json({ saleId: id, itemUpdated: req.body });
 });
 
+const remove = rescue(async (req, res) => {
+  const { id } = req.params;
+  const sale = await SaleService.getById(id);
+
+  if (!sale[0]) {
+    return res.status(NOT_FOUND).json({ message: 'Sale not found' });
+  }
+
+  await SaleService.remove(id);
+  return res.status(OK).json(sale);
+});
+
 module.exports = {
   create,
   getAll,
   getById,
   update,
+  remove,
 };
