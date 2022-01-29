@@ -14,9 +14,7 @@ const ERR_409 = {
 const create = async (name, quantity) => {
   const product = await ProductModel.getByName(name);
 
-  if (product) {
-    throw ERR_409;
-  }
+  if (product) throw ERR_409;
 
   const createdProduct = await ProductModel.create(name, quantity);
   return { id: createdProduct.id };
@@ -25,9 +23,7 @@ const create = async (name, quantity) => {
 const getById = async (id) => {
   const product = await ProductModel.getById(id);
 
-  if (product === undefined) {
-    throw ERR_404;
-  }
+  if (product === undefined) throw ERR_404;
 
   return product;
 };
@@ -40,20 +36,16 @@ const getAll = async () => {
 const update = async (id, name, quantity) => {
   const product = await ProductModel.update(id, name, quantity);
 
-  if (product === undefined) {
-    throw ERR_404;
-  }
+  if (product === undefined) throw ERR_404;
 
   return product;
 };
 
 const remove = async (id) => {
   const productId = await ProductModel.getById(id);
-  const product = await ProductModel.remove(id);
+  await ProductModel.remove(id);
 
-  if (product === undefined) {
-    throw ERR_404;
-  }
+  if (productId === undefined) throw ERR_404;
 
   return productId;
 };
