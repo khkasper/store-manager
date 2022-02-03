@@ -316,4 +316,27 @@ describe('Testando Sale Model', () => {
       expect(affectedRows).to.be.equal(1);
     });
   });
+
+  describe('Testando função remove', () => {
+    const payloadId = 1;
+
+    before(async () => {
+      const execute = [{ affectedRows: 1 }];
+      sinon.stub(connection, 'execute').resolves(execute);
+    });
+
+    after(async () => {
+      connection.execute.restore();
+    });
+
+    it('retorna um objeto', async () => {
+      const response = await SaleModel.remove(payloadId);
+      expect(response).to.be.an('object');
+    });
+
+    it('retorna um objeto com valor caso seja atualizado', async () => {
+      const { affectedRows } = await SaleModel.remove(payloadId);
+      expect(affectedRows).to.be.equal(1);
+    });
+  });
 });

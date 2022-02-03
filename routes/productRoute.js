@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { nameAuth, quantityAuth } = require('../middlewares');
+const { productNameValidation, productQuantityValidation } = require('../middlewares');
 const ProductController = require('../controllers/productController');
 
 const router = express.Router();
@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/:id', ProductController.getById);
 router.get('/', ProductController.getAll);
 router.post('/', [
-  nameAuth,
-  quantityAuth,
+  productNameValidation,
+  productQuantityValidation,
   ProductController.create,
 ]);
 router.put('/:id', [
-  nameAuth,
-  quantityAuth,
+  productNameValidation,
+  productQuantityValidation,
   ProductController.update,
 ]);
 router.delete('/:id', ProductController.remove);

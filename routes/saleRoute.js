@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { saleAuth, saleQuantityAuth } = require('../middlewares');
+const { saleValidation, saleQuantityValidation } = require('../middlewares');
 const SaleController = require('../controllers/saleController');
 
 const router = express.Router();
@@ -8,13 +8,13 @@ const router = express.Router();
 router.get('/:id', SaleController.getById);
 router.get('/', SaleController.getAll);
 router.post('/', [
-  saleAuth,
-  saleQuantityAuth,
+  saleValidation,
+  saleQuantityValidation,
   SaleController.create,
 ]);
 router.put('/:id', [
-  saleAuth,
-  saleQuantityAuth,
+  saleValidation,
+  saleQuantityValidation,
   SaleController.update,
 ]);
 router.delete('/:id', SaleController.remove);

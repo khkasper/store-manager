@@ -1,13 +1,13 @@
 const errorMiddleware = require('./errorMiddleware');
-const nameAuth = require('./nameAuth');
-const quantityAuth = require('./quantityAuth');
-const saleAuth = require('./saleAuth');
-const saleQuantityAuth = require('./saleQuantityAuth');
+const productNameValidation = require('./productNameValidation');
+const productQuantityValidation = require('./productQuantityValidation');
+const saleValidation = require('./saleValidation');
+const saleQuantityValidation = require('./saleQuantityValidation');
 
 module.exports = {
   errorMiddleware,
-  nameAuth,
-  quantityAuth,
-  saleAuth,
-  saleQuantityAuth,
+  productNameValidation,
+  productQuantityValidation,
+  saleValidation,
+  saleQuantityValidation,
 };
