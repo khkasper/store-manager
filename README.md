@@ -35,9 +35,9 @@
 
 - [x] 10 - Crie um endpoint para deletar uma venda
 
-- [x] 11 - Atualize a quantidade de produtos
+- [ ] 11 - Atualize a quantidade de produtos
 
-- [x] 12 - Valide a quantidade de produtos
+- [ ] 12 - Valide a quantidade de produtos
 
 - [x] 13 - Escreva testes para cobrir 50% das camadas da sua aplicação
 
